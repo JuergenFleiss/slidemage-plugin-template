@@ -36,6 +36,18 @@ and its `activate(host)`, the imports, no compiled files, and a `CHANGELOG.md` e
 `python build.py` checks and then builds `dist/<id>-<version>.smplugin` (a zip of `plugin.toml`, `LICENSE`
 and the package) and its `.sha256`. The build is reproducible: the same files always give the same hash.
 
+### Logging
+
+`host.log(message, level="info")` writes to SlideMage's own log, under the area `plugins.<id>`; `level` is
+`"debug"`, `"info"`, `"warning"` or `"error"`. `host.debug_enabled()` says whether the user has turned the
+debug log on. Both need `requires_slidemage = ">=0.13.5"`. Check `debug_enabled()` before building an
+expensive debug line, so the plugin stays quiet while the user has it off:
+
+```python
+if host.debug_enabled():
+    host.log(f"loaded {len(items)} items", level="debug")
+```
+
 ### Releasing a version
 
 1. Raise `version` in `plugin.toml` and add a line to the end of `CHANGELOG.md`:
