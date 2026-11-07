@@ -58,6 +58,8 @@ host.on_theme_changed(lambda tokens: restyle(tokens))   # repaint when the user 
 Style only your own object names (`setObjectName("myTitle")`); SlideMage's internal ones are not API.
 These need `requires_slidemage = ">=0.14.36"`. SlideMage's plugin guide (`docs/PLUGIN_GUIDE.md`) has the
 full list.
+See the [SlideMage design handbook](https://github.com/SlideMage/SlideMage/tree/develop/docs/design-handbook) for
+colour roles, scales and themed widget examples.
 
 ### Logging
 
